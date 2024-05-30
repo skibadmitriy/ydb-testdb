@@ -1,0 +1,12 @@
+- name: Just force systemd to reread configs
+  ansible.builtin.systemd_service:
+    daemon_reload: true
+  listen: "systemctl daemon-reload"
+
+- name: Restart ydbd-testdb
+  become: true
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: ydbd-testdb
+    state: restarted
+  listen: "restart ydbd"

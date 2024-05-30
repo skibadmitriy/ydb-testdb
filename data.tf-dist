@@ -1,0 +1,23 @@
+data "yandex_resourcemanager_cloud" "ydb" {
+    cloud_id = ""
+}
+
+data "yandex_resourcemanager_folder" "ydb" {
+    folder_id = ""
+}
+
+data "yandex_vpc_network" "ydb" {
+    network_id = ""
+}
+
+data "yandex_vpc_subnet" "ydb-ru-central1-a" {
+    subnet_id = ""
+}
+
+data "yandex_vpc_subnet" "ydb-ru-central1-b" {
+    subnet_id = ""
+}
+
+data "yandex_vpc_subnet" "ydb-ru-central1-d" {
+    subnet_id = ""
+}

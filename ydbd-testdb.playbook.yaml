@@ -1,0 +1,19 @@
+---
+- hosts:
+    - ydb_testdb
+  become: yes
+  become_user: root
+  strategy: linear
+  vars:
+    go_arch_map:
+      i386: '386'
+      x86_64: 'amd64'
+      aarch64: 'arm64'
+      armv7l: 'armv7'
+      armv6l: 'armv6'
+    go_arch: "{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}"
+    ydbd_version: "23.3.17"
+    ydbd_binary_url: "https://binaries.ydb.tech/release/{{ ydbd_version }}/ydbd-{{ ydbd_version }}-linux-{{ go_arch }}.tar.gz"
+    ydbd_home: "/opt/ydb"
+  roles:
+    - ydbd-testdb
